@@ -1,25 +1,21 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import useFetch from './useFetch';
+
+function Test99() {
+    const {isLoading, data} = useFetch();
+    if (isLoading) <div>Loading...</div>;
+    else if (data?.length < 1) return <div>No data found</div>;
+    return <div>{data && data?.map(post => <div key={post.id}>{post.title}</div>)}</div>;
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div>
+            <div>Hello</div>
+            <Test99 />
+        </div>
+    );
 }
 
 export default App;
