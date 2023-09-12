@@ -13,6 +13,7 @@ export const useFetch = () => {
         try {
             const response = await axios.get(endpoint);
             setData(response.data);
+            setError(null);
         } catch (errors) {
             alert('There is an error');
             setError(errors);
@@ -20,9 +21,10 @@ export const useFetch = () => {
             setIsLoading(false);
         }
     }, []);
+
     useEffect(() => {
         fetchData(endpoint);
-    }, []);
+    }, [fetchData]);
 
     const mutate = () => {
         fetchData(endpoint);

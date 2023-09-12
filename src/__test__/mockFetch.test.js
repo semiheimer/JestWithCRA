@@ -1,4 +1,4 @@
-import {render, screen} from '@testing-library/react';
+import {render, renderHook, screen} from '@testing-library/react';
 import React from 'react';
 import {useFetch} from '../hooks/useFetch';
 import {MOCK_POSTS} from '../mocks';
@@ -26,9 +26,14 @@ jest.mock('../hooks/useFetch', () => {
 });
 
 describe('App', () => {
-    it('should fetch normally', () => {
+    it('should fetch normally', async () => {
+        const {result} = renderHook(() => useFetch());
         render(<Test99 />);
+        expect(result.current.isLoading).toBe(false);
         const listItems = screen.getAllByRole('listitem');
+        expect(result.current.data).not.toEqual([]);
         expect(listItems.length).toBe(MOCK_POSTS.length);
+        // Hata almadan işlem tamamlanmalı
+        expect(result.current.error).toBe(undefined);
     });
 });
