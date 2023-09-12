@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should fetch Listing component with magnetic 1`] = `
+<div>
+  <div>
+    <div>
+      Hello
+    </div>
+    <div>
+      Loading...
+    </div>
+    <div>
+      Bello
+    </div>
+  </div>
+</div>
+`;

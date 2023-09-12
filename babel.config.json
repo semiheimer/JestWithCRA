@@ -1,0 +1,6 @@
+{
+    "plugins": [
+        // ... other plugins
+        "react-magnetic-di/babel-plugin"
+    ]
+}

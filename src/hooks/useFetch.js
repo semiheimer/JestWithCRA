@@ -1,9 +1,9 @@
-import axios from 'axios';
 import {useCallback, useEffect, useState} from 'react';
+import axios from 'axios';
 
 const endpoint = 'https://jsonplaceholder.typicode.com/posts';
 
-const useFetch = () => {
+export const useFetch = () => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -19,7 +19,7 @@ const useFetch = () => {
         } finally {
             setIsLoading(false);
         }
-    });
+    }, []);
     useEffect(() => {
         fetchData(endpoint);
     }, []);
@@ -35,4 +35,3 @@ const useFetch = () => {
         mutate,
     };
 };
-export default useFetch;
